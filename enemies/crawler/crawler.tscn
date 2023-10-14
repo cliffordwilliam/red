@@ -1,0 +1,225 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://assets/tres/tile.tres" type="Texture" id=1]
+[ext_resource path="res://enemies/crawler/crawler.gd" type="Script" id=2]
+[ext_resource path="res://effects/walk_dust.tscn" type="PackedScene" id=3]
+[ext_resource path="res://effects/explosion.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/sounds/explosion.wav" type="AudioStream" id=5]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 8, 6 )
+
+[sub_resource type="Animation" id=4]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 2, 2 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("sprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("sprite:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0.341176, 0.552941, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "dead"
+length = 0.533333
+step = 0.0166667
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "create_explosion"
+}, {
+"args": [  ],
+"method": "create_explosion"
+}, {
+"args": [  ],
+"method": "create_explosion"
+}, {
+"args": [  ],
+"method": "create_explosion"
+}, {
+"args": [  ],
+"method": "create_explosion"
+}, {
+"args": [  ],
+"method": "create_explosion"
+}, {
+"args": [  ],
+"method": "create_explosion"
+}, {
+"args": [  ],
+"method": "create_explosion"
+} ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.533333 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "hurt"
+length = 0.366667
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/path = NodePath("sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333, 0.266667, 0.3, 0.333333, 0.366667 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 2, 0 ), Vector2( -2, 0 ), Vector2( 2, 0 ), Vector2( -2, 0 ), Vector2( 1, 0 ), Vector2( -1, 0 ), Vector2( 1, 0 ), Vector2( -1, 0 ), Vector2( 1, 0 ), Vector2( -1, 0 ), Vector2( 1, 0 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("sprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.0333333 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.341176, 0.552941, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "left_hit"
+length = 0.3
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/path = NodePath("sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.133333, 0.166667, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1.75, 2 ), Vector2( 2.125, 2 ), Vector2( 2.125, 2 ), Vector2( 2, 2 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("sprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.133333, 0.166667, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -0.999999, 2.38419e-07 ), Vector2( 0.5, 2.38419e-07 ), Vector2( 0.5, 2.38419e-07 ), Vector2( 1.49012e-07, 2.38419e-07 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "right_hit"
+length = 0.3
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/path = NodePath("sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.133333, 0.166667, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 0 ), Vector2( -0.5, 0 ), Vector2( -0.5, 0 ), Vector2( 4.17233e-07, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("sprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.133333, 0.166667, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1.75, 2 ), Vector2( 2.125, 2 ), Vector2( 2.125, 2 ), Vector2( 2, 2 ) ]
+}
+
+[node name="crawler" type="Area2D"]
+collision_layer = 8
+collision_mask = 15
+script = ExtResource( 2 )
+walk_dust_scene = ExtResource( 3 )
+explosion_scene = ExtResource( 4 )
+
+[node name="sprite" type="Sprite" parent="."]
+modulate = Color( 0.341176, 0.552941, 1, 1 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 1 )
+offset = Vector2( 0, -4 )
+
+[node name="collider" type="CollisionShape2D" parent="."]
+unique_name_in_owner = true
+modulate = Color( 0.654902, 0.0313726, 0.113725, 1 )
+position = Vector2( 0, -8 )
+shape = SubResource( 1 )
+
+[node name="sprite_wall_animator" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+anims/RESET = SubResource( 4 )
+anims/dead = SubResource( 8 )
+anims/hurt = SubResource( 7 )
+anims/left_hit = SubResource( 5 )
+anims/right_hit = SubResource( 6 )
+
+[node name="explosion_sfx" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource( 5 )
+
+[connection signal="area_entered" from="." to="." method="_on_crawler_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_crawler_body_entered"]
+[connection signal="animation_finished" from="sprite_wall_animator" to="." method="_on_sprite_wall_animator_animation_finished"]

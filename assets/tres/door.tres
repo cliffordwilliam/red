@@ -1,0 +1,5 @@
+[gd_resource type="SegmentShape2D" format=2]
+
+[resource]
+resource_local_to_scene = true
+b = Vector2( 0, 180 )

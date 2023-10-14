@@ -8,14 +8,90 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Camera2D",
+"class": "cam",
+"language": "GDScript",
+"path": "res://camera/cam.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "red",
+"language": "GDScript",
+"path": "res://red/red.gd"
+}, {
+"base": "Node2D",
+"class": "room",
+"language": "GDScript",
+"path": "res://rooms/room.gd"
+}, {
+"base": "Node",
+"class": "world",
+"language": "GDScript",
+"path": "res://world/world.gd"
+} ]
+_global_script_class_icons={
+"cam": "",
+"red": "",
+"room": "",
+"world": ""
+}
+
 [application]
 
 config/name="Red"
+run/main_scene="res://world/world.tscn"
 config/icon="res://icon.png"
+
+[debug]
+
+shapes/collision/shape_color=Color( 1, 1, 1, 0.419608 )
+
+[display]
+
+window/size/width=320
+window/size/height=180
+window/size/test_width=1280
+window/size/test_height=720
+window/stretch/mode="2d"
+window/stretch/aspect="keep"
 
 [gui]
 
 common/drop_mouse_on_gui_input_disabled=true
+
+[input]
+
+left={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":16777231,"unicode":0,"echo":false,"script":null)
+ ]
+}
+right={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":16777233,"unicode":0,"echo":false,"script":null)
+ ]
+}
+jump={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":67,"unicode":0,"echo":false,"script":null)
+ ]
+}
+down={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":16777234,"unicode":0,"echo":false,"script":null)
+ ]
+}
+
+[layer_names]
+
+2d_physics/layer_1="tiles"
+2d_physics/layer_2="red"
+2d_physics/layer_3="platform"
+2d_physics/layer_4="enemies"
+
+[node]
+
+name_casing=2
 
 [physics]
 
